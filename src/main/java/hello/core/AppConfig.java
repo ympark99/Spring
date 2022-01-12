@@ -10,6 +10,9 @@ import hello.core.order.OrderServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+// 아래 코드 사용해도 됨
+// @Autowired MemberRepository memberRepository;
+
 @Configuration // 설정 정보
 public class AppConfig {
 
