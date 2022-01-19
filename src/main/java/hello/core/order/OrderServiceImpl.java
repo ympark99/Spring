@@ -5,10 +5,11 @@ import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor // final 붙은 거 생성자 만들어줌
+//@RequiredArgsConstructor // final 붙은 거 생성자 만들어줌
 public class OrderServiceImpl implements OrderService{
 
     //private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -36,11 +37,15 @@ public class OrderServiceImpl implements OrderService{
 //        this.discountPolicy = discountPolicy;
 //    }
 
+//    @Autowired
+//    private DiscountPolicy rateDiscountPolicy;
+
 //    // @RequiredArgsConstructor로 대체
-//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-//        this.memberRepository = memberRepository;
-//        this.discountPolicy = discountPolicy;
-//    }
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
 //    일반 메서드 주입
 //    @Autowired
