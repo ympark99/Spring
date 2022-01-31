@@ -3,6 +3,9 @@ package hello.core.lifecycle;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 public class NetworkClient {
 
     private String url;
@@ -38,6 +41,7 @@ public class NetworkClient {
 //    }
 
     // 의존 관계 주입 종료 후 실행
+    @PostConstruct
     public void init() {
         System.out.println("NetworkClient.init");
         connect();
@@ -52,6 +56,7 @@ public class NetworkClient {
 //    }
 
     // 소멸 메소드
+    @PreDestroy
     public void close() {
         System.out.println("NetworkClient.close");
         disconnect();
